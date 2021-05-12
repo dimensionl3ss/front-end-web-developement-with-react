@@ -13,7 +13,7 @@ function RenderMenuItem({dish,onClick}) {
           </Card>
       ); 
 }
-const Menu = (props) => {
+const Menu = (props) => { 
     
         const menu = props.dishes.map((dish) => {
             return (
