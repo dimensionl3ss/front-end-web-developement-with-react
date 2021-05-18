@@ -11,7 +11,7 @@ import About from './AboutComponent';
 
 const mapStateToProps = state => {
     return {
-      dishes: state.dishes,
+      dishes: state.dishes, 
       comments: state.comments,
       promotions: state.promotions,
       leaders: state.leaders
@@ -21,7 +21,7 @@ const mapStateToProps = state => {
 class Main extends Component {
 
     constructor(props) {
-        super(props);
+        super(props); 
     }
 
     render() {
