@@ -27,8 +27,7 @@ class CommentForm extends Component {
         });
     }
     handleSubmit(values) {
-        console.log('Current State is: ' + JSON.stringify(values));
-        alert('Current State is: ' + JSON.stringify(values));
+        this.props.addComment(this.props.dishId, values.rating, values.author, values.comment);
         this.toggleCommentForm();
     }
     render() {
@@ -108,20 +107,29 @@ class CommentForm extends Component {
     }
 }
 
-function RenderComments({comments})
+function RenderComments({comments,dishId,addComment})
 {
     if (comments != null) {
         let options = { year: "numeric", month: "short", day: "2-digit" };
-        return comments.map(comment => (
-            <ul key={comment.id} className="list-unstyled">
-            <li className="mb-2">{comment.comment}</li>
-            <li>
-                -- {comment.author}{" "}
-                {new Intl.DateTimeFormat("en-US", options).format(new Date(Date.parse(comment.date)))}
-            </li>
-            </ul>
-            
-        ));
+    return(    
+        <div className="col-12 col-md-5 m-1">
+            <h4>Comments</h4>
+            {
+                comments.map(comment => 
+                (
+                    <ul key={comment.id} className="list-unstyled">
+                        <li className="mb-2">{comment.comment}</li>
+                        <li>
+                            -- {comment.author}{" "}
+                            {new Intl.DateTimeFormat("en-US", options).format(new Date(Date.parse(comment.date)))}
+                        </li>
+                    </ul>
+                
+                ))
+            }
+            <CommentForm dishId={dishId} addComment={addComment} />
+        </div>
+    );
     }
     return <div></div>;
 }
@@ -129,6 +137,7 @@ function RenderComments({comments})
 function RenderDish( {dish} )
 {
     return(
+        <div className="col-12 col-md-5 m-1">
             <Card>
                 <CardImg top src={dish.image} alt={dish.name} />
                 <CardBody>
@@ -136,6 +145,7 @@ function RenderDish( {dish} )
                 <CardText>{dish.description}</CardText>
                 </CardBody>
             </Card>
+        </div>
     );
 }
 const DishDetail = (props) => {
@@ -154,14 +164,13 @@ const DishDetail = (props) => {
                     </div>                
                 </div>
                 <div className="row">
-                    <div className="col-12 col-md-5 m-1">
-                        <RenderDish dish={props.dish} />
-                    </div>
-                    <div className="col-12 col-md-5 m-1">
-                        <h4>Comments</h4>
-                        <RenderComments comments={props.comments} />
-                        <CommentForm />
-                    </div>
+                    
+                    <RenderDish dish={props.dish} />
+                    <RenderComments 
+                        comments={props.comments} 
+                        addComment={props.addComment}
+                        dishId={props.dish.id}
+                    />
                 </div>
             </div>
         );
