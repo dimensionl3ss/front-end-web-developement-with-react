@@ -1,6 +1,7 @@
 # Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This is an assignment project from the course [Front End Developement With React](https://www.coursera.org/learn/front-end-react) 
+offered by `The Hong Kong University of Science and Technology`.
 
 ## Available Scripts
 
