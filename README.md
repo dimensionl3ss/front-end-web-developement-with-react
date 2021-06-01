@@ -1,6 +1,6 @@
 # Getting Started with Create React App
 
-This is an assignment project from the course [Front End Developement With React](https://www.coursera.org/learn/front-end-react) 
+This is an assignment project from the course [Front End Development With React](https://www.coursera.org/learn/front-end-react) 
 offered by `The Hong Kong University of Science and Technology`.
 
 ## Available Scripts
